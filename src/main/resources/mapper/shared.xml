@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shared" > 
+	<!-- FD_CORP_ID查询字段， 没有别名 -->
+	<sql id="fdCorpIdPermission">
+		<choose>
+			<!--如果用户是超级管理员，管理员或者总公司人员就可以加载全部内容-->
+		
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )">
+				AND 1=1
+			</when>
+		
+			<when test="user.fdUserType !=null and user.fdUserType != ''">
+				<choose>
+					<when test="user.corpIdList != null and user.corpIdList.size() != 0">
+						<!-- 查询用户有权限的公司数据 -->
+						AND FD_CORP_ID in
+						<foreach collection="user.corpIdList" index="index" item="corpId" open="(" separator="," close=")">
+							#{corpId, jdbcType=VARCHAR}
+						</foreach>
+					</when>
+					<otherwise>
+						AND FD_CORP_ID in ('')   <!-- 否则不查出任何数据 -->
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise> AND 1=0 </otherwise>
+		</choose>
+	</sql>
+
+	<!-- FD_CORP_ID查询字段，g别名 -->
+	<sql id="fdCorpIdPermission_g">
+		<choose>
+			<!--如果用户是超级管理员，管理员或者总公司人员就可以加载全部内容-->
+			
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )">
+				AND 1=1
+			</when>
+			
+			<when test="user.fdUserType !=null and user.fdUserType != ''">
+				<choose>
+					<when test="user.corpIdList != null and user.corpIdList.size() != 0">
+						<!-- 查询用户有权限的公司数据 -->
+						AND g.FD_CORP_ID in
+						<foreach collection="user.corpIdList" index="index" item="corpId" open="(" separator="," close=")">
+							#{corpId, jdbcType=VARCHAR}
+						</foreach>
+					</when>
+					<otherwise>
+						AND g.FD_CORP_ID in ('')   <!-- 否则不查出任何数据 -->
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise> AND 1=0 </otherwise>
+		</choose>
+	</sql>
+
+	<!-- FD_CORP_ID查询字段，c别名 -->
+	<sql id="fdCorpIdPermission_c">
+	<choose>
+			<!--如果用户是超级管理员，管理员或者总公司人员就可以加载全部内容-->
+			
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )">
+				AND 1=1
+			</when>
+			
+			<when test="user.fdUserType !=null and user.fdUserType != ''">
+				<choose>
+					<when test="user.corpIdList != null and user.corpIdList.size() != 0">
+						<!-- 查询用户有权限的公司数据 -->
+						AND c.FD_CORP_ID in
+						<foreach collection="user.corpIdList" index="index" item="corpId" open="(" separator="," close=")">
+							#{corpId, jdbcType=VARCHAR}
+						</foreach>
+					</when>
+					<otherwise>
+						AND c.FD_CORP_ID in ('')   <!-- 否则不查出任何数据 -->
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise> AND 1=0 </otherwise>
+		</choose>
+	</sql>
+	<!-- FD_CORP_ID查询字段，c别名 -->
+	<sql id="fdCorpIdPermission_u">
+		<choose>
+			<!--如果用户是超级管理员，管理员或者总公司人员就可以加载全部内容-->
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )">
+				AND 1=1
+			</when>
+			<when test="user.fdUserType !=null and user.fdUserType != ''">
+				<choose>
+					<when test="user.corpIdList != null and user.corpIdList.size() != 0">
+						<!-- 查询用户有权限的公司数据 -->
+						AND u.FD_CORP_ID in
+						<foreach collection="user.corpIdList" index="index" item="corpId" open="(" separator="," close=")">
+							#{corpId, jdbcType=VARCHAR}
+						</foreach>
+					</when>
+					<otherwise>
+						AND u.FD_CORP_ID in ('')   <!-- 否则不查出任何数据 -->
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise> AND 1=0 </otherwise>
+		</choose>
+	</sql>
+
+	<!-- FD_CORP_ID查询字段，c别名 -->
+	<sql id="fdCorpIdPermission_d">
+		<choose>
+			<!--如果用户是超级管理员，管理员或者总公司人员就可以加载全部内容-->
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )">
+				AND 1=1
+			</when>
+			<when test="user.fdUserType !=null and user.fdUserType != ''">
+				<choose>
+					<when test="user.corpIdList != null and user.corpIdList.size() != 0">
+						<!-- 查询用户有权限的公司数据 -->
+						AND d.FD_CORP_ID in
+						<foreach collection="user.corpIdList" index="index" item="corpId" open="(" separator="," close=")">
+							#{corpId, jdbcType=VARCHAR}
+						</foreach>
+					</when>
+					<otherwise>
+						AND d.FD_CORP_ID in ('')   <!-- 否则不查出任何数据 -->
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise> AND 1=0 </otherwise>
+		</choose>
+	</sql>
+
+
+	<!-- FD_CORP_ID查询字段，u别名 -->
+	<sql id="fdCorpPermissionQuery_u">
+		<choose>
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )" >
+				and 1=1
+			</when>
+			<otherwise>
+				and  u.FD_CORP_ID = #{user.fdCorpId, jdbcType=VARCHAR}
+			</otherwise>
+		</choose>
+	</sql>
+
+	<!-- FD_CORP_ID查询字段，o别名 -->
+	<sql id="fdCorpIdPermission_o">
+	<choose>
+			<!--如果用户是超级管理员，管理员或者总公司人员就可以加载全部内容-->
+			
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )">
+				AND 1=1
+			</when>
+			
+			<when test="user.fdUserType !=null and user.fdUserType != ''">
+				<choose>
+					<when test="user.corpIdList != null and user.corpIdList.size() != 0">
+						<!-- 查询用户有权限的公司数据 -->
+						AND o.FD_CORP_ID in
+						<foreach collection="user.corpIdList" index="index" item="corpId" open="(" separator="," close=")">
+							#{corpId, jdbcType=VARCHAR}
+						</foreach>
+					</when>
+					<otherwise>
+						AND o.FD_CORP_ID in ('')   <!-- 否则不查出任何数据 -->
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise> AND 1=0 </otherwise>
+		</choose>
+	</sql>
+
+
+	<!-- FD_ORDER_CROP查询字段，o别名 -->
+	<sql id="fdOrderCorpPermission_o">
+	<choose>
+			<!--如果用户是超级管理员，管理员或者总公司人员就可以加载全部内容-->
+			
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )">
+				AND 1=1
+			</when>
+			
+			<when test="user.fdUserType !=null and user.fdUserType != ''">
+				<choose>
+					<when test="user.corpIdList != null and user.corpIdList.size() != 0">
+						<!-- 查询用户有权限的公司数据 -->
+						AND o.FD_ORDER_CROP  in
+						<foreach collection="user.corpIdList" index="index" item="corpId" open="(" separator="," close=")">
+							#{corpId, jdbcType=VARCHAR}
+						</foreach>
+					</when>
+					<otherwise>
+						AND o.FD_ORDER_CROP  in ('')   <!-- 否则不查出任何数据 -->
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise> AND 1=0 </otherwise>
+		</choose>
+	</sql>
+
+	<sql id="fdCorpPermissionQuery">
+		<choose>
+			
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )" >
+				and 1=1
+			</when>
+			<otherwise>
+				and  FD_CORP_ID = #{user.fdCorpId, jdbcType=VARCHAR}
+			</otherwise>
+		</choose>
+	</sql>
+
+	<sql id="fdCorpPermissionQuery_s">
+		<choose>
+			
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )" >
+				and 1=1
+			</when>
+			<otherwise>
+				and  s.FD_CORP_ID = #{user.fdCorpId, jdbcType=VARCHAR}
+			</otherwise>
+		</choose>
+	</sql>
+
+	<sql id="fdCorpPermissionQuery_a">
+		<choose>
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )" >
+				and 1=1
+			</when>
+			<otherwise>
+				and  a.FD_CORP_ID = #{user.fdCorpId, jdbcType=VARCHAR}
+			</otherwise>
+		</choose>
+	</sql>
+
+	<sql id="fdCorpPermissionGroupBy">
+		<choose>
+			
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )" >
+			</when>
+			<otherwise>
+				,FD_CORP_ID
+			</otherwise>
+		</choose>
+	</sql>
+
+	<!-- FD_CORP_ID查询字段，g别名 -->
+	<sql id="fdCorpIdPermission_s">
+		<choose>
+			<!--如果用户是超级管理员，管理员或者总公司人员就可以加载全部内容-->
+			
+			<when test="user.fdUserType !=null and user.fdUserType != '' and (user.fdUserType == 1 or user.fdUserType ==2 )">
+				AND 1=1
+			</when>
+			
+			<when test="user.fdUserType !=null and user.fdUserType != ''">
+				<choose>
+					<when test="user.corpIdList != null and user.corpIdList.size() != 0">
+						<!-- 查询用户有权限的公司数据 -->
+						AND s.FD_CORP_ID in
+						<foreach collection="user.corpIdList" index="index" item="corpId" open="(" separator="," close=")">
+							#{corpId, jdbcType=VARCHAR}
+						</foreach>
+					</when>
+					<otherwise>
+						AND s.FD_CORP_ID in ('')   <!-- 否则不查出任何数据 -->
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise> AND 1=0 </otherwise>
+		</choose>
+	</sql>
+
+</mapper>
