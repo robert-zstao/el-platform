@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zst.el.dao.EmUserMessageMapper">
+  <resultMap id="BaseResultMap" type="com.zst.el.bean.EmUserMessage">
+    <id column="SG_ID" jdbcType="INTEGER" property="sgId" />
+    <result column="SG_DEPARTMENT_ID" jdbcType="INTEGER" property="sgDepartmentId" />
+    <result column="SG_NAME" jdbcType="VARCHAR" property="sgName" />
+    <result column="SG_EMAIL" jdbcType="VARCHAR" property="sgEmail" />
+    <result column="SG_QQ" jdbcType="VARCHAR" property="sgQq" />
+    <result column="SG_WECHAT" jdbcType="VARCHAR" property="sgWechat" />
+    <result column="SG_PHONE" jdbcType="VARCHAR" property="sgPhone" />
+    <result column="SG_SEX" jdbcType="CHAR" property="sgSex" />
+    <result column="SG_EDUCATION" jdbcType="CHAR" property="sgEducation" />
+    <result column="SG_ID_CARD" jdbcType="VARCHAR" property="sgIdCard" />
+    <result column="SG_ID_IMAGE1" jdbcType="VARCHAR" property="sgIdImage1" />
+    <result column="SG_ID_IMAGE2" jdbcType="VARCHAR" property="sgIdImage2" />
+    <result column="SG_HOUSE" jdbcType="VARCHAR" property="sgHouse" />
+    <result column="SG_ADDRESS" jdbcType="VARCHAR" property="sgAddress" />
+    <result column="SG_FAMILY_MEMBER" jdbcType="VARCHAR" property="sgFamilyMember" />
+    <result column="SG_FAMILY_PHONE" jdbcType="VARCHAR" property="sgFamilyPhone" />
+    <result column="SG_FAMILY_WORK" jdbcType="VARCHAR" property="sgFamilyWork" />
+    <result column="SG_EMERGENCY_CONTACT" jdbcType="VARCHAR" property="sgEmergencyContact" />
+    <result column="SG_EMERGENCY_PHONE" jdbcType="VARCHAR" property="sgEmergencyPhone" />
+    <result column="SG_EDUCATION_IMAGE1" jdbcType="VARCHAR" property="sgEducationImage1" />
+    <result column="SG_EDUCATION_IMAGE2" jdbcType="VARCHAR" property="sgEducationImage2" />
+    <result column="SG_COLLEGES_NAME" jdbcType="VARCHAR" property="sgCollegesName" />
+    <result column="SG_SCHOOL_SYSTEM" jdbcType="CHAR" property="sgSchoolSystem" />
+    <result column="SG_COLLEGES_TIME" jdbcType="VARCHAR" property="sgCollegesTime" />
+    <result column="SG_WORK_TIME" jdbcType="VARCHAR" property="sgWorkTime" />
+    <result column="SG_DEL_FLAG" jdbcType="CHAR" property="sgDelFlag" />
+    <result column="SG_CREATE_USER" jdbcType="INTEGER" property="sgCreateUser" />
+    <result column="SG_UPDATE_USER" jdbcType="INTEGER" property="sgUpdateUser" />
+    <result column="SG_CREATE_TIME" jdbcType="VARCHAR" property="sgCreateTime" />
+    <result column="SG_UPDATE_TIME" jdbcType="VARCHAR" property="sgUpdateTime" />
+    <result column="SG_REMARK" jdbcType="VARCHAR" property="sgRemark" />
+    <result column="SG_CONTRACT_TYPE" jdbcType="CHAR" property="sgContractType" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    SG_ID, SG_DEPARTMENT_ID, SG_NAME, SG_EMAIL, SG_QQ, SG_WECHAT, SG_PHONE, SG_SEX, SG_EDUCATION, 
+    SG_ID_CARD, SG_ID_IMAGE1, SG_ID_IMAGE2, SG_HOUSE, SG_ADDRESS, SG_FAMILY_MEMBER, SG_FAMILY_PHONE, 
+    SG_FAMILY_WORK, SG_EMERGENCY_CONTACT, SG_EMERGENCY_PHONE, SG_EDUCATION_IMAGE1, SG_EDUCATION_IMAGE2, 
+    SG_COLLEGES_NAME, SG_SCHOOL_SYSTEM, SG_COLLEGES_TIME, SG_WORK_TIME, SG_DEL_FLAG, 
+    SG_CREATE_USER, SG_UPDATE_USER, SG_CREATE_TIME, SG_UPDATE_TIME, SG_REMARK, SG_CONTRACT_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from em_user_message
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from em_user_message
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.zst.el.bean.EmUserMessage">
+    insert into em_user_message (SG_ID, SG_DEPARTMENT_ID, SG_NAME, 
+      SG_EMAIL, SG_QQ, SG_WECHAT, 
+      SG_PHONE, SG_SEX, SG_EDUCATION, 
+      SG_ID_CARD, SG_ID_IMAGE1, SG_ID_IMAGE2, 
+      SG_HOUSE, SG_ADDRESS, SG_FAMILY_MEMBER, 
+      SG_FAMILY_PHONE, SG_FAMILY_WORK, SG_EMERGENCY_CONTACT, 
+      SG_EMERGENCY_PHONE, SG_EDUCATION_IMAGE1, SG_EDUCATION_IMAGE2, 
+      SG_COLLEGES_NAME, SG_SCHOOL_SYSTEM, SG_COLLEGES_TIME, 
+      SG_WORK_TIME, SG_DEL_FLAG, SG_CREATE_USER, 
+      SG_UPDATE_USER, SG_CREATE_TIME, SG_UPDATE_TIME, 
+      SG_REMARK, SG_CONTRACT_TYPE)
+    values (#{sgId,jdbcType=INTEGER}, #{sgDepartmentId,jdbcType=INTEGER}, #{sgName,jdbcType=VARCHAR}, 
+      #{sgEmail,jdbcType=VARCHAR}, #{sgQq,jdbcType=VARCHAR}, #{sgWechat,jdbcType=VARCHAR}, 
+      #{sgPhone,jdbcType=VARCHAR}, #{sgSex,jdbcType=CHAR}, #{sgEducation,jdbcType=CHAR}, 
+      #{sgIdCard,jdbcType=VARCHAR}, #{sgIdImage1,jdbcType=VARCHAR}, #{sgIdImage2,jdbcType=VARCHAR}, 
+      #{sgHouse,jdbcType=VARCHAR}, #{sgAddress,jdbcType=VARCHAR}, #{sgFamilyMember,jdbcType=VARCHAR}, 
+      #{sgFamilyPhone,jdbcType=VARCHAR}, #{sgFamilyWork,jdbcType=VARCHAR}, #{sgEmergencyContact,jdbcType=VARCHAR}, 
+      #{sgEmergencyPhone,jdbcType=VARCHAR}, #{sgEducationImage1,jdbcType=VARCHAR}, #{sgEducationImage2,jdbcType=VARCHAR}, 
+      #{sgCollegesName,jdbcType=VARCHAR}, #{sgSchoolSystem,jdbcType=CHAR}, #{sgCollegesTime,jdbcType=VARCHAR}, 
+      #{sgWorkTime,jdbcType=VARCHAR}, #{sgDelFlag,jdbcType=CHAR}, #{sgCreateUser,jdbcType=INTEGER}, 
+      #{sgUpdateUser,jdbcType=INTEGER}, #{sgCreateTime,jdbcType=VARCHAR}, #{sgUpdateTime,jdbcType=VARCHAR}, 
+      #{sgRemark,jdbcType=VARCHAR}, #{sgContractType,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zst.el.bean.EmUserMessage">
+    insert into em_user_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sgId != null">
+        SG_ID,
+      </if>
+      <if test="sgDepartmentId != null">
+        SG_DEPARTMENT_ID,
+      </if>
+      <if test="sgName != null">
+        SG_NAME,
+      </if>
+      <if test="sgEmail != null">
+        SG_EMAIL,
+      </if>
+      <if test="sgQq != null">
+        SG_QQ,
+      </if>
+      <if test="sgWechat != null">
+        SG_WECHAT,
+      </if>
+      <if test="sgPhone != null">
+        SG_PHONE,
+      </if>
+      <if test="sgSex != null">
+        SG_SEX,
+      </if>
+      <if test="sgEducation != null">
+        SG_EDUCATION,
+      </if>
+      <if test="sgIdCard != null">
+        SG_ID_CARD,
+      </if>
+      <if test="sgIdImage1 != null">
+        SG_ID_IMAGE1,
+      </if>
+      <if test="sgIdImage2 != null">
+        SG_ID_IMAGE2,
+      </if>
+      <if test="sgHouse != null">
+        SG_HOUSE,
+      </if>
+      <if test="sgAddress != null">
+        SG_ADDRESS,
+      </if>
+      <if test="sgFamilyMember != null">
+        SG_FAMILY_MEMBER,
+      </if>
+      <if test="sgFamilyPhone != null">
+        SG_FAMILY_PHONE,
+      </if>
+      <if test="sgFamilyWork != null">
+        SG_FAMILY_WORK,
+      </if>
+      <if test="sgEmergencyContact != null">
+        SG_EMERGENCY_CONTACT,
+      </if>
+      <if test="sgEmergencyPhone != null">
+        SG_EMERGENCY_PHONE,
+      </if>
+      <if test="sgEducationImage1 != null">
+        SG_EDUCATION_IMAGE1,
+      </if>
+      <if test="sgEducationImage2 != null">
+        SG_EDUCATION_IMAGE2,
+      </if>
+      <if test="sgCollegesName != null">
+        SG_COLLEGES_NAME,
+      </if>
+      <if test="sgSchoolSystem != null">
+        SG_SCHOOL_SYSTEM,
+      </if>
+      <if test="sgCollegesTime != null">
+        SG_COLLEGES_TIME,
+      </if>
+      <if test="sgWorkTime != null">
+        SG_WORK_TIME,
+      </if>
+      <if test="sgDelFlag != null">
+        SG_DEL_FLAG,
+      </if>
+      <if test="sgCreateUser != null">
+        SG_CREATE_USER,
+      </if>
+      <if test="sgUpdateUser != null">
+        SG_UPDATE_USER,
+      </if>
+      <if test="sgCreateTime != null">
+        SG_CREATE_TIME,
+      </if>
+      <if test="sgUpdateTime != null">
+        SG_UPDATE_TIME,
+      </if>
+      <if test="sgRemark != null">
+        SG_REMARK,
+      </if>
+      <if test="sgContractType != null">
+        SG_CONTRACT_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sgId != null">
+        #{sgId,jdbcType=INTEGER},
+      </if>
+      <if test="sgDepartmentId != null">
+        #{sgDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="sgName != null">
+        #{sgName,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEmail != null">
+        #{sgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="sgQq != null">
+        #{sgQq,jdbcType=VARCHAR},
+      </if>
+      <if test="sgWechat != null">
+        #{sgWechat,jdbcType=VARCHAR},
+      </if>
+      <if test="sgPhone != null">
+        #{sgPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sgSex != null">
+        #{sgSex,jdbcType=CHAR},
+      </if>
+      <if test="sgEducation != null">
+        #{sgEducation,jdbcType=CHAR},
+      </if>
+      <if test="sgIdCard != null">
+        #{sgIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="sgIdImage1 != null">
+        #{sgIdImage1,jdbcType=VARCHAR},
+      </if>
+      <if test="sgIdImage2 != null">
+        #{sgIdImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="sgHouse != null">
+        #{sgHouse,jdbcType=VARCHAR},
+      </if>
+      <if test="sgAddress != null">
+        #{sgAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sgFamilyMember != null">
+        #{sgFamilyMember,jdbcType=VARCHAR},
+      </if>
+      <if test="sgFamilyPhone != null">
+        #{sgFamilyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sgFamilyWork != null">
+        #{sgFamilyWork,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEmergencyContact != null">
+        #{sgEmergencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEmergencyPhone != null">
+        #{sgEmergencyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEducationImage1 != null">
+        #{sgEducationImage1,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEducationImage2 != null">
+        #{sgEducationImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="sgCollegesName != null">
+        #{sgCollegesName,jdbcType=VARCHAR},
+      </if>
+      <if test="sgSchoolSystem != null">
+        #{sgSchoolSystem,jdbcType=CHAR},
+      </if>
+      <if test="sgCollegesTime != null">
+        #{sgCollegesTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgWorkTime != null">
+        #{sgWorkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgDelFlag != null">
+        #{sgDelFlag,jdbcType=CHAR},
+      </if>
+      <if test="sgCreateUser != null">
+        #{sgCreateUser,jdbcType=INTEGER},
+      </if>
+      <if test="sgUpdateUser != null">
+        #{sgUpdateUser,jdbcType=INTEGER},
+      </if>
+      <if test="sgCreateTime != null">
+        #{sgCreateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUpdateTime != null">
+        #{sgUpdateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgRemark != null">
+        #{sgRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sgContractType != null">
+        #{sgContractType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.zst.el.bean.EmUserMessage">
+    update em_user_message
+    <set>
+      <if test="sgDepartmentId != null">
+        SG_DEPARTMENT_ID = #{sgDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="sgName != null">
+        SG_NAME = #{sgName,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEmail != null">
+        SG_EMAIL = #{sgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="sgQq != null">
+        SG_QQ = #{sgQq,jdbcType=VARCHAR},
+      </if>
+      <if test="sgWechat != null">
+        SG_WECHAT = #{sgWechat,jdbcType=VARCHAR},
+      </if>
+      <if test="sgPhone != null">
+        SG_PHONE = #{sgPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sgSex != null">
+        SG_SEX = #{sgSex,jdbcType=CHAR},
+      </if>
+      <if test="sgEducation != null">
+        SG_EDUCATION = #{sgEducation,jdbcType=CHAR},
+      </if>
+      <if test="sgIdCard != null">
+        SG_ID_CARD = #{sgIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="sgIdImage1 != null">
+        SG_ID_IMAGE1 = #{sgIdImage1,jdbcType=VARCHAR},
+      </if>
+      <if test="sgIdImage2 != null">
+        SG_ID_IMAGE2 = #{sgIdImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="sgHouse != null">
+        SG_HOUSE = #{sgHouse,jdbcType=VARCHAR},
+      </if>
+      <if test="sgAddress != null">
+        SG_ADDRESS = #{sgAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sgFamilyMember != null">
+        SG_FAMILY_MEMBER = #{sgFamilyMember,jdbcType=VARCHAR},
+      </if>
+      <if test="sgFamilyPhone != null">
+        SG_FAMILY_PHONE = #{sgFamilyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sgFamilyWork != null">
+        SG_FAMILY_WORK = #{sgFamilyWork,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEmergencyContact != null">
+        SG_EMERGENCY_CONTACT = #{sgEmergencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEmergencyPhone != null">
+        SG_EMERGENCY_PHONE = #{sgEmergencyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEducationImage1 != null">
+        SG_EDUCATION_IMAGE1 = #{sgEducationImage1,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEducationImage2 != null">
+        SG_EDUCATION_IMAGE2 = #{sgEducationImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="sgCollegesName != null">
+        SG_COLLEGES_NAME = #{sgCollegesName,jdbcType=VARCHAR},
+      </if>
+      <if test="sgSchoolSystem != null">
+        SG_SCHOOL_SYSTEM = #{sgSchoolSystem,jdbcType=CHAR},
+      </if>
+      <if test="sgCollegesTime != null">
+        SG_COLLEGES_TIME = #{sgCollegesTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgWorkTime != null">
+        SG_WORK_TIME = #{sgWorkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgDelFlag != null">
+        SG_DEL_FLAG = #{sgDelFlag,jdbcType=CHAR},
+      </if>
+      <if test="sgCreateUser != null">
+        SG_CREATE_USER = #{sgCreateUser,jdbcType=INTEGER},
+      </if>
+      <if test="sgUpdateUser != null">
+        SG_UPDATE_USER = #{sgUpdateUser,jdbcType=INTEGER},
+      </if>
+      <if test="sgCreateTime != null">
+        SG_CREATE_TIME = #{sgCreateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUpdateTime != null">
+        SG_UPDATE_TIME = #{sgUpdateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgRemark != null">
+        SG_REMARK = #{sgRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sgContractType != null">
+        SG_CONTRACT_TYPE = #{sgContractType,jdbcType=CHAR},
+      </if>
+    </set>
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zst.el.bean.EmUserMessage">
+    update em_user_message
+    set SG_DEPARTMENT_ID = #{sgDepartmentId,jdbcType=INTEGER},
+      SG_NAME = #{sgName,jdbcType=VARCHAR},
+      SG_EMAIL = #{sgEmail,jdbcType=VARCHAR},
+      SG_QQ = #{sgQq,jdbcType=VARCHAR},
+      SG_WECHAT = #{sgWechat,jdbcType=VARCHAR},
+      SG_PHONE = #{sgPhone,jdbcType=VARCHAR},
+      SG_SEX = #{sgSex,jdbcType=CHAR},
+      SG_EDUCATION = #{sgEducation,jdbcType=CHAR},
+      SG_ID_CARD = #{sgIdCard,jdbcType=VARCHAR},
+      SG_ID_IMAGE1 = #{sgIdImage1,jdbcType=VARCHAR},
+      SG_ID_IMAGE2 = #{sgIdImage2,jdbcType=VARCHAR},
+      SG_HOUSE = #{sgHouse,jdbcType=VARCHAR},
+      SG_ADDRESS = #{sgAddress,jdbcType=VARCHAR},
+      SG_FAMILY_MEMBER = #{sgFamilyMember,jdbcType=VARCHAR},
+      SG_FAMILY_PHONE = #{sgFamilyPhone,jdbcType=VARCHAR},
+      SG_FAMILY_WORK = #{sgFamilyWork,jdbcType=VARCHAR},
+      SG_EMERGENCY_CONTACT = #{sgEmergencyContact,jdbcType=VARCHAR},
+      SG_EMERGENCY_PHONE = #{sgEmergencyPhone,jdbcType=VARCHAR},
+      SG_EDUCATION_IMAGE1 = #{sgEducationImage1,jdbcType=VARCHAR},
+      SG_EDUCATION_IMAGE2 = #{sgEducationImage2,jdbcType=VARCHAR},
+      SG_COLLEGES_NAME = #{sgCollegesName,jdbcType=VARCHAR},
+      SG_SCHOOL_SYSTEM = #{sgSchoolSystem,jdbcType=CHAR},
+      SG_COLLEGES_TIME = #{sgCollegesTime,jdbcType=VARCHAR},
+      SG_WORK_TIME = #{sgWorkTime,jdbcType=VARCHAR},
+      SG_DEL_FLAG = #{sgDelFlag,jdbcType=CHAR},
+      SG_CREATE_USER = #{sgCreateUser,jdbcType=INTEGER},
+      SG_UPDATE_USER = #{sgUpdateUser,jdbcType=INTEGER},
+      SG_CREATE_TIME = #{sgCreateTime,jdbcType=VARCHAR},
+      SG_UPDATE_TIME = #{sgUpdateTime,jdbcType=VARCHAR},
+      SG_REMARK = #{sgRemark,jdbcType=VARCHAR},
+      SG_CONTRACT_TYPE = #{sgContractType,jdbcType=CHAR}
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </update>
+</mapper>

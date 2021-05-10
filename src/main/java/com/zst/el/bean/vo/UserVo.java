@@ -1,81 +1,46 @@
 package com.zst.el.bean.vo;
 
-import java.util.Arrays;
+import com.zst.el.bean.BaseBean;
+import com.zst.el.bean.EmUser;
+import com.zst.el.bean.EmUserInfo;
+import lombok.*;
 
+import java.io.Serializable;
+import java.util.List;
 
-public class UserVo {
-    private String[] roles;
-    private String introduction;
-    private String avatar;
+/**
+ * 用户类
+ */
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
+public class UserVo extends BaseBean implements Serializable {
+
+    private static final long serialVersionUID = 5883208389725905601L;
+
+    private String id;
+
     private String name;
+
+    private String password;
+
+    private String number;
+
     private String token;
-    private String corpId;
-    private String userId;
 
-    public String getUserId() {
-        return userId;
-    }
+    private String image;
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+    private List<String> corpInfo;
 
-    public String getCorpId() {
-        return corpId;
-    }
+    private String roleId;
 
-    public void setCorpId(String corpId) {
-        this.corpId = corpId;
-    }
+    private EmUser user;
 
-    public void setToken(String token) {
-        this.token = token;
-    }
+    private EmUserInfo userInfo;
 
-    public String getToken() {
-        return token;
-    }
+    private String sex;
 
-    public void setRoles(String[] roles) {
-        this.roles = roles;
-    }
 
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
-
-    public void setAvatar(String avatar) {
-            this.avatar = avatar;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String[] getRoles() {
-        return roles;
-    }
-
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return "UserVo{" +
-                "roles=" + Arrays.toString(roles) +
-                ", introduction='" + introduction + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", name='" + name + '\'' +
-                ", token='" + token + '\'' +
-                '}';
-    }
 }

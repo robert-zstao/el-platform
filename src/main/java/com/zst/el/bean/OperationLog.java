@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class OperationLog {
 
-    private String id;
+    private int id;
 
     private String model;
 
@@ -25,7 +25,7 @@ public class OperationLog {
 
     private String desc;
 
-    private String userId;
+    private int userId;
 
     private String insetDate;
 
@@ -35,11 +35,11 @@ public class OperationLog {
 
     private String results;
 
-    private String userName;
-
     private String url;
 
     private String reqIp;
+
+    private String ipAddress;
 
     private String version;
 

@@ -3,17 +3,15 @@ package com.zst.el.logger;
 import com.alibaba.fastjson.JSON;
 import com.zst.el.bean.ExceptionLog;
 import com.zst.el.bean.OperationLog;
-import com.zst.el.bean.User;
+import com.zst.el.bean.vo.UserVo;
 import com.zst.el.utils.DateUtil;
 import com.zst.el.utils.IpUtils;
-import com.zst.el.utils.UUIDUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -52,14 +50,14 @@ public class OperLogAspect {
      /**
       * 设置操作日志切入点 记录操作日志 在注解的位置切入代码
       */
-     @Pointcut("execution(* com.zst.el.controller..*.*(..))")
+     @Pointcut("execution(* com.zst.el.controller.AuthController*.*(..))")
       public void operLogPoinCut() {
       }
 
       /**
   65    * 设置操作异常切入点记录异常日志 扫描所有controller包下操作
   66   */
-     @Pointcut("execution(* com.zst.el.controller..*.*(..))")
+     @Pointcut("execution(* com.zst.el.controller.AuthController.*.*(..))")
      public void operExceptionLogPoinCut() {
 
      }
@@ -76,11 +74,17 @@ public class OperLogAspect {
           // 从获取RequestAttributes中获取HttpServletRequest的信息
           HttpServletRequest request = (HttpServletRequest) requestAttributes
                         .resolveReference(RequestAttributes.REFERENCE_REQUEST);
+          //如果是登录，记录登录信息
+          if(request.getRequestURI().contains("/login")||request.getRequestURI().contains("/loginOut")){
+             return;
+          }
+          //如果是操作，记录操作信息
+
           String token = request.getParameter("token");
-          User user = (User)request.getSession().getAttribute(token);
+          UserVo user = (UserVo)request.getSession().getAttribute(token);
           OperationLog operlog = new OperationLog();
           try {
-              operlog.setId(UUIDUtils.getUUID()); // 主键ID
+              //operlog.setId(UUIDUtils.getUUID()); // 主键ID
               // 从切面织入点处通过反射机制获取织入点处的方法
               MethodSignature signature = (MethodSignature) joinPoint.getSignature();
               // 获取切入点所在的方法
@@ -111,11 +115,11 @@ public class OperLogAspect {
 
             operlog.setReqParams(params); // 请求参数
             operlog.setResults(JSON.toJSONString(keys)); // 返回结果
-            operlog.setUserId(user.getNumber()); // 请求用户ID
-            operlog.setUserName(user.getName()); // 请求用户名称
+            operlog.setUserId(user.getSgId()); // 请求用户ID
             operlog.setReqIp(IpUtils.getIpAddr(request)); // 请求IP
             operlog.setUrl(request.getRequestURI()); // 请求URI
             operlog.setInsetDate(DateUtil.dateToString(new Date())); // 创建时间
+            operlog.setIpAddress(IpUtils.getIpVoByRequest(request).getCity());
             operlog.setVersion(operVer); // 操作版本
             //operationLogService.insert(operlog);
               System.out.println(operlog);
@@ -202,5 +206,6 @@ public class OperLogAspect {
         return message;
     }
 
+    //创建用户登录信息
 
 }

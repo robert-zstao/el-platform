@@ -59,7 +59,6 @@ public class Message implements Cloneable{
 
     public Message(){
         //更加业务逻辑对对象属性进行复制
-        System.out.println("这是在创建Message的原型对象");
     }
 
     public Message(String code,String message){

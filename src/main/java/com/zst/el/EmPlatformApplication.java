@@ -8,7 +8,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.zst.el.dao.impl")
+@MapperScan(basePackages = "com.zst.el.dao")
 @EnableTransactionManagement
 @EnableScheduling
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds=3600) //spring-session 在redis中的存储时间

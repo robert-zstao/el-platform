@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zst.el.dao.EmUserMapper">
+  <resultMap id="BaseResultMap" type="com.zst.el.bean.EmUser">
+    <id column="SG_ID" jdbcType="INTEGER" property="sgId" />
+    <result column="SG_NUMBER" jdbcType="VARCHAR" property="sgNumber" />
+    <result column="SG_USER_TYPE" jdbcType="VARCHAR" property="sgUserType" />
+    <result column="SG_PASSWORD" jdbcType="VARCHAR" property="sgPassword" />
+    <result column="SG_STATE" jdbcType="CHAR" property="sgState" />
+    <result column="SG_DEL_FLAG" jdbcType="CHAR" property="sgDelFlag" />
+    <result column="SG_CREATE_TIME" jdbcType="VARCHAR" property="sgCreateTime" />
+    <result column="SG_UPDATE_TIME" jdbcType="VARCHAR" property="sgUpdateTime" />
+    <result column="SG_REMARK" jdbcType="VARCHAR" property="sgRemark" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    SG_ID, SG_NUMBER, SG_USER_TYPE, SG_PASSWORD, SG_STATE, SG_DEL_FLAG, SG_CREATE_TIME, 
+    SG_UPDATE_TIME, SG_REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from em_user
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from em_user
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.zst.el.bean.EmUser">
+    insert into em_user (SG_ID, SG_NUMBER, SG_USER_TYPE, 
+      SG_PASSWORD, SG_STATE, SG_DEL_FLAG, 
+      SG_CREATE_TIME, SG_UPDATE_TIME, SG_REMARK
+      )
+    values (#{sgId,jdbcType=INTEGER}, #{sgNumber,jdbcType=VARCHAR}, #{sgUserType,jdbcType=VARCHAR}, 
+      #{sgPassword,jdbcType=VARCHAR}, #{sgState,jdbcType=CHAR}, #{sgDelFlag,jdbcType=CHAR}, 
+      #{sgCreateTime,jdbcType=VARCHAR}, #{sgUpdateTime,jdbcType=VARCHAR}, #{sgRemark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zst.el.bean.EmUser">
+    insert into em_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sgId != null">
+        SG_ID,
+      </if>
+      <if test="sgNumber != null">
+        SG_NUMBER,
+      </if>
+      <if test="sgUserType != null">
+        SG_USER_TYPE,
+      </if>
+      <if test="sgPassword != null">
+        SG_PASSWORD,
+      </if>
+      <if test="sgState != null">
+        SG_STATE,
+      </if>
+      <if test="sgDelFlag != null">
+        SG_DEL_FLAG,
+      </if>
+      <if test="sgCreateTime != null">
+        SG_CREATE_TIME,
+      </if>
+      <if test="sgUpdateTime != null">
+        SG_UPDATE_TIME,
+      </if>
+      <if test="sgRemark != null">
+        SG_REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sgId != null">
+        #{sgId,jdbcType=INTEGER},
+      </if>
+      <if test="sgNumber != null">
+        #{sgNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUserType != null">
+        #{sgUserType,jdbcType=VARCHAR},
+      </if>
+      <if test="sgPassword != null">
+        #{sgPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sgState != null">
+        #{sgState,jdbcType=CHAR},
+      </if>
+      <if test="sgDelFlag != null">
+        #{sgDelFlag,jdbcType=CHAR},
+      </if>
+      <if test="sgCreateTime != null">
+        #{sgCreateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUpdateTime != null">
+        #{sgUpdateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgRemark != null">
+        #{sgRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.zst.el.bean.EmUser">
+    update em_user
+    <set>
+      <if test="sgNumber != null">
+        SG_NUMBER = #{sgNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUserType != null">
+        SG_USER_TYPE = #{sgUserType,jdbcType=VARCHAR},
+      </if>
+      <if test="sgPassword != null">
+        SG_PASSWORD = #{sgPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sgState != null">
+        SG_STATE = #{sgState,jdbcType=CHAR},
+      </if>
+      <if test="sgDelFlag != null">
+        SG_DEL_FLAG = #{sgDelFlag,jdbcType=CHAR},
+      </if>
+      <if test="sgCreateTime != null">
+        SG_CREATE_TIME = #{sgCreateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUpdateTime != null">
+        SG_UPDATE_TIME = #{sgUpdateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgRemark != null">
+        SG_REMARK = #{sgRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zst.el.bean.EmUser">
+    update em_user
+    set SG_NUMBER = #{sgNumber,jdbcType=VARCHAR},
+      SG_USER_TYPE = #{sgUserType,jdbcType=VARCHAR},
+      SG_PASSWORD = #{sgPassword,jdbcType=VARCHAR},
+      SG_STATE = #{sgState,jdbcType=CHAR},
+      SG_DEL_FLAG = #{sgDelFlag,jdbcType=CHAR},
+      SG_CREATE_TIME = #{sgCreateTime,jdbcType=VARCHAR},
+      SG_UPDATE_TIME = #{sgUpdateTime,jdbcType=VARCHAR},
+      SG_REMARK = #{sgRemark,jdbcType=VARCHAR}
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -15,11 +15,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class LoginLogInfo {
 
-    private String id;
+    private int id;
 
     private String userId;
 
-    private String type; //登录、登出
+    private char type; //0登录、 1. 登出
 
     private String desc;
 

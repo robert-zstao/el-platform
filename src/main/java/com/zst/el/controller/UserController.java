@@ -19,15 +19,12 @@ public class UserController {
 
     private Logger logger = Logger.getLogger(UserController.class);
 
-    @GetMapping("/querySubUser")
-    public Message querySubUser(@RequestParam(value = "username", required = true) String username,
-                                @RequestParam(value = "userId", required = false) String userId,
-                                @RequestParam(value = "fdUsername", required = false) String fdUsername,
-                                @RequestParam(value = "page", required = false) int page,
-                                @RequestParam(value = "limit", required = false) int limit,
-                                @RequestParam(value = "userPhone", required = false) String userPhone){
-        //使用原型设计模式，减少系统开销
-        Message message = PrototypeFactory.getMessage();
+
+    @GetMapping("/queryUserInfo")
+    public Message querySubUser(@RequestParam(value = "token", required = true) String token,
+                                @RequestParam(value = "userId", required = false) String userId){
+
+        Message message = new Message();
        // message = userService.selectByCorp(systemUser, userId, fdUsername, userPhone,page,limit);
 
         return message;

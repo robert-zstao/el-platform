@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zst.el.dao.EmUserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zst.el.bean.EmUserInfo">
+    <id column="SG_ID" jdbcType="INTEGER" property="sgId" />
+    <result column="SG_DEPARTMENT_ID" jdbcType="INTEGER" property="sgDepartmentId" />
+    <result column="SG_NUMBER" jdbcType="VARCHAR" property="sgNumber" />
+    <result column="SG_USER_NAME" jdbcType="VARCHAR" property="sgUserName" />
+    <result column="SG_USER_TYPE" jdbcType="VARCHAR" property="sgUserType" />
+    <result column="SG_EMAIL" jdbcType="VARCHAR" property="sgEmail" />
+    <result column="SG_QQ" jdbcType="VARCHAR" property="sgQq" />
+    <result column="SG_WECHAT" jdbcType="VARCHAR" property="sgWechat" />
+    <result column="SG_PHONE" jdbcType="VARCHAR" property="sgPhone" />
+    <result column="SG_SEX" jdbcType="VARCHAR" property="sgSex" />
+    <result column="SG_AVATAR" jdbcType="VARCHAR" property="sgAvatar" />
+    <result column="SG_STATE" jdbcType="VARCHAR" property="sgState" />
+    <result column="SG_DEL_FLAG" jdbcType="VARCHAR" property="sgDelFlag" />
+    <result column="SG_CREATE_USER" jdbcType="INTEGER" property="sgCreateUser" />
+    <result column="SG_UPDATE_USER" jdbcType="INTEGER" property="sgUpdateUser" />
+    <result column="SG_CREATE_TIME" jdbcType="VARCHAR" property="sgCreateTime" />
+    <result column="SG_UPDATE_TIME" jdbcType="VARCHAR" property="sgUpdateTime" />
+    <result column="SG_REMARK" jdbcType="VARCHAR" property="sgRemark" />
+    <result column="SG_ORDER" jdbcType="INTEGER" property="sgOrder" />
+    <result column="SG_TYPE" jdbcType="CHAR" property="sgType" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    SG_ID, SG_DEPARTMENT_ID, SG_NUMBER, SG_USER_NAME, SG_USER_TYPE, SG_EMAIL, SG_QQ, 
+    SG_WECHAT, SG_PHONE, SG_SEX, SG_AVATAR, SG_STATE, SG_DEL_FLAG, SG_CREATE_USER, SG_UPDATE_USER, 
+    SG_CREATE_TIME, SG_UPDATE_TIME, SG_REMARK, SG_ORDER, SG_TYPE
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from em_user_info
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from em_user_info
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.zst.el.bean.EmUserInfo">
+    insert into em_user_info (SG_ID, SG_DEPARTMENT_ID, SG_NUMBER, 
+      SG_USER_NAME, SG_USER_TYPE, SG_EMAIL, 
+      SG_QQ, SG_WECHAT, SG_PHONE, 
+      SG_SEX, SG_AVATAR, SG_STATE, 
+      SG_DEL_FLAG, SG_CREATE_USER, SG_UPDATE_USER, 
+      SG_CREATE_TIME, SG_UPDATE_TIME, SG_REMARK, 
+      SG_ORDER, SG_TYPE)
+    values (#{sgId,jdbcType=INTEGER}, #{sgDepartmentId,jdbcType=INTEGER}, #{sgNumber,jdbcType=VARCHAR}, 
+      #{sgUserName,jdbcType=VARCHAR}, #{sgUserType,jdbcType=VARCHAR}, #{sgEmail,jdbcType=VARCHAR}, 
+      #{sgQq,jdbcType=VARCHAR}, #{sgWechat,jdbcType=VARCHAR}, #{sgPhone,jdbcType=VARCHAR}, 
+      #{sgSex,jdbcType=VARCHAR}, #{sgAvatar,jdbcType=VARCHAR}, #{sgState,jdbcType=VARCHAR}, 
+      #{sgDelFlag,jdbcType=VARCHAR}, #{sgCreateUser,jdbcType=INTEGER}, #{sgUpdateUser,jdbcType=INTEGER}, 
+      #{sgCreateTime,jdbcType=VARCHAR}, #{sgUpdateTime,jdbcType=VARCHAR}, #{sgRemark,jdbcType=VARCHAR}, 
+      #{sgOrder,jdbcType=INTEGER}, #{sgType,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zst.el.bean.EmUserInfo">
+    insert into em_user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sgId != null">
+        SG_ID,
+      </if>
+      <if test="sgDepartmentId != null">
+        SG_DEPARTMENT_ID,
+      </if>
+      <if test="sgNumber != null">
+        SG_NUMBER,
+      </if>
+      <if test="sgUserName != null">
+        SG_USER_NAME,
+      </if>
+      <if test="sgUserType != null">
+        SG_USER_TYPE,
+      </if>
+      <if test="sgEmail != null">
+        SG_EMAIL,
+      </if>
+      <if test="sgQq != null">
+        SG_QQ,
+      </if>
+      <if test="sgWechat != null">
+        SG_WECHAT,
+      </if>
+      <if test="sgPhone != null">
+        SG_PHONE,
+      </if>
+      <if test="sgSex != null">
+        SG_SEX,
+      </if>
+      <if test="sgAvatar != null">
+        SG_AVATAR,
+      </if>
+      <if test="sgState != null">
+        SG_STATE,
+      </if>
+      <if test="sgDelFlag != null">
+        SG_DEL_FLAG,
+      </if>
+      <if test="sgCreateUser != null">
+        SG_CREATE_USER,
+      </if>
+      <if test="sgUpdateUser != null">
+        SG_UPDATE_USER,
+      </if>
+      <if test="sgCreateTime != null">
+        SG_CREATE_TIME,
+      </if>
+      <if test="sgUpdateTime != null">
+        SG_UPDATE_TIME,
+      </if>
+      <if test="sgRemark != null">
+        SG_REMARK,
+      </if>
+      <if test="sgOrder != null">
+        SG_ORDER,
+      </if>
+      <if test="sgType != null">
+        SG_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sgId != null">
+        #{sgId,jdbcType=INTEGER},
+      </if>
+      <if test="sgDepartmentId != null">
+        #{sgDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="sgNumber != null">
+        #{sgNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUserName != null">
+        #{sgUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUserType != null">
+        #{sgUserType,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEmail != null">
+        #{sgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="sgQq != null">
+        #{sgQq,jdbcType=VARCHAR},
+      </if>
+      <if test="sgWechat != null">
+        #{sgWechat,jdbcType=VARCHAR},
+      </if>
+      <if test="sgPhone != null">
+        #{sgPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sgSex != null">
+        #{sgSex,jdbcType=VARCHAR},
+      </if>
+      <if test="sgAvatar != null">
+        #{sgAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="sgState != null">
+        #{sgState,jdbcType=VARCHAR},
+      </if>
+      <if test="sgDelFlag != null">
+        #{sgDelFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="sgCreateUser != null">
+        #{sgCreateUser,jdbcType=INTEGER},
+      </if>
+      <if test="sgUpdateUser != null">
+        #{sgUpdateUser,jdbcType=INTEGER},
+      </if>
+      <if test="sgCreateTime != null">
+        #{sgCreateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUpdateTime != null">
+        #{sgUpdateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgRemark != null">
+        #{sgRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sgOrder != null">
+        #{sgOrder,jdbcType=INTEGER},
+      </if>
+      <if test="sgType != null">
+        #{sgType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.zst.el.bean.EmUserInfo">
+    update em_user_info
+    <set>
+      <if test="sgDepartmentId != null">
+        SG_DEPARTMENT_ID = #{sgDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="sgNumber != null">
+        SG_NUMBER = #{sgNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUserName != null">
+        SG_USER_NAME = #{sgUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUserType != null">
+        SG_USER_TYPE = #{sgUserType,jdbcType=VARCHAR},
+      </if>
+      <if test="sgEmail != null">
+        SG_EMAIL = #{sgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="sgQq != null">
+        SG_QQ = #{sgQq,jdbcType=VARCHAR},
+      </if>
+      <if test="sgWechat != null">
+        SG_WECHAT = #{sgWechat,jdbcType=VARCHAR},
+      </if>
+      <if test="sgPhone != null">
+        SG_PHONE = #{sgPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sgSex != null">
+        SG_SEX = #{sgSex,jdbcType=VARCHAR},
+      </if>
+      <if test="sgAvatar != null">
+        SG_AVATAR = #{sgAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="sgState != null">
+        SG_STATE = #{sgState,jdbcType=VARCHAR},
+      </if>
+      <if test="sgDelFlag != null">
+        SG_DEL_FLAG = #{sgDelFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="sgCreateUser != null">
+        SG_CREATE_USER = #{sgCreateUser,jdbcType=INTEGER},
+      </if>
+      <if test="sgUpdateUser != null">
+        SG_UPDATE_USER = #{sgUpdateUser,jdbcType=INTEGER},
+      </if>
+      <if test="sgCreateTime != null">
+        SG_CREATE_TIME = #{sgCreateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgUpdateTime != null">
+        SG_UPDATE_TIME = #{sgUpdateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sgRemark != null">
+        SG_REMARK = #{sgRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sgOrder != null">
+        SG_ORDER = #{sgOrder,jdbcType=INTEGER},
+      </if>
+      <if test="sgType != null">
+        SG_TYPE = #{sgType,jdbcType=CHAR},
+      </if>
+    </set>
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zst.el.bean.EmUserInfo">
+    update em_user_info
+    set SG_DEPARTMENT_ID = #{sgDepartmentId,jdbcType=INTEGER},
+      SG_NUMBER = #{sgNumber,jdbcType=VARCHAR},
+      SG_USER_NAME = #{sgUserName,jdbcType=VARCHAR},
+      SG_USER_TYPE = #{sgUserType,jdbcType=VARCHAR},
+      SG_EMAIL = #{sgEmail,jdbcType=VARCHAR},
+      SG_QQ = #{sgQq,jdbcType=VARCHAR},
+      SG_WECHAT = #{sgWechat,jdbcType=VARCHAR},
+      SG_PHONE = #{sgPhone,jdbcType=VARCHAR},
+      SG_SEX = #{sgSex,jdbcType=VARCHAR},
+      SG_AVATAR = #{sgAvatar,jdbcType=VARCHAR},
+      SG_STATE = #{sgState,jdbcType=VARCHAR},
+      SG_DEL_FLAG = #{sgDelFlag,jdbcType=VARCHAR},
+      SG_CREATE_USER = #{sgCreateUser,jdbcType=INTEGER},
+      SG_UPDATE_USER = #{sgUpdateUser,jdbcType=INTEGER},
+      SG_CREATE_TIME = #{sgCreateTime,jdbcType=VARCHAR},
+      SG_UPDATE_TIME = #{sgUpdateTime,jdbcType=VARCHAR},
+      SG_REMARK = #{sgRemark,jdbcType=VARCHAR},
+      SG_ORDER = #{sgOrder,jdbcType=INTEGER},
+      SG_TYPE = #{sgType,jdbcType=CHAR}
+    where SG_ID = #{sgId,jdbcType=INTEGER}
+  </update>
+</mapper>

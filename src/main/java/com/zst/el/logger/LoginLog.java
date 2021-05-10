@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME) //注解在哪个阶段执行
 @Documented
 public @interface LoginLog {
-    String type() default "";  // 操作类型
+    char type() default '0';  // 操作类型
     String code() default ""; //操作状态
     String desc() default "";  // 操作说明
 }

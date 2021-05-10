@@ -1,15 +1,8 @@
 package com.zst.el.fliter;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.zst.el.bean.User;
-import com.zst.el.utils.StringUtil;
-import org.springframework.stereotype.Component;
+import com.zst.el.bean.vo.UserVo;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,7 +23,7 @@ public class UserVerifyInterceptor extends HandlerInterceptorAdapter {
         System.out.println("开始拦截了。。。。。。。。。");
         System.out.println("============"+token);
         try{
-            User user = (User)request.getSession().getAttribute(token);
+            UserVo user = (UserVo)request.getSession().getAttribute(token);
             String requestURI = request.getRequestURI();
             String contextPath = request.getContextPath();
             contextPath = contextPath+"/";

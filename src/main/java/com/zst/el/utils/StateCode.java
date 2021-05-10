@@ -27,6 +27,9 @@ public class StateCode implements Serializable {
 
     public static final String DELETE = "删除";
 
+    public static final char LOING = '0';
+    public static final char LOING_OUT = '1';
+
     /**
      * 登录返回消息
      */

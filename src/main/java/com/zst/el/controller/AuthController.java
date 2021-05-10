@@ -1,16 +1,15 @@
 package com.zst.el.controller;
 
 
-import com.zst.el.bean.User;
+import com.zst.el.bean.vo.UserVo;
 import com.zst.el.bean.vo.Message;
 import com.zst.el.bean.vo.PrototypeFactory;
+import com.zst.el.logger.LoginLog;
 import com.zst.el.logger.OperLog;
 import com.zst.el.utils.StateCode;
 import com.zst.el.utils.UUIDUtils;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,11 +25,12 @@ public class AuthController extends BaseController{
      * 用户登录
      */
      @PostMapping("/login")
+     @LoginLog(type = StateCode.LOING,desc = "用户登录")
     public Message login(HttpServletRequest request,HttpSession session){
          Message message = PrototypeFactory.getMessage();
          String number = request.getParameter("number");
          String pwd = request.getParameter("password");
-         User user = new User();
+         UserVo user = new UserVo();
          //用户及权限验证
         user.setId("1");
         user.setNumber("123456");
@@ -45,6 +45,8 @@ public class AuthController extends BaseController{
 
          return message;
      }
+
+
 
 
     @PostMapping("/test")

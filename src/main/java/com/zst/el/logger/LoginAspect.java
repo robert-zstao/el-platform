@@ -1,18 +1,13 @@
 package com.zst.el.logger;
 
 import com.alibaba.fastjson.JSON;
-import com.zst.el.bean.ExceptionLog;
 import com.zst.el.bean.LoginLogInfo;
-import com.zst.el.bean.OperationLog;
-import com.zst.el.bean.User;
 import com.zst.el.controller.RedisController;
 import com.zst.el.utils.DateUtil;
 import com.zst.el.utils.IpUtils;
-import com.zst.el.utils.UUIDUtils;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -84,7 +79,7 @@ public class LoginAspect {
 
         LoginLogInfo info = new LoginLogInfo();
         try {
-            info.setId(UUIDUtils.getUUID()); // 主键ID
+            //info.setId(UUIDUtils.getUUID()); // 主键ID
             // 从切面织入点处通过反射机制获取织入点处的方法
             MethodSignature signature = (MethodSignature) joinPoint.getSignature();
             // 获取切入点所在的方法
@@ -93,7 +88,7 @@ public class LoginAspect {
             LoginLog opLog = method.getAnnotation(LoginLog.class);
             System.out.println("获取到的操作："+opLog);
             if (opLog != null) {
-                String operType = opLog.type();
+                char operType = opLog.type();
                 String operDesc = opLog.desc();
                 info.setType(operType); // 操作类型
                 info.setDesc(operDesc); // 操作描述
